@@ -1,0 +1,389 @@
+
+/* Main Profile Page */
+
+.profile-page-wrapper {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 35px;
+  max-width: 1250px;
+  margin: 35px auto;
+  padding: 20px 30px;
+  color: #e6edf3;
+  min-height: 75vh;
+  box-sizing: border-box;
+}
+
+/* Profile Sidebar */
+
+.user-profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.profile-image {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background-color: #21262d;
+  border: 2px solid #30363d;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 85px;
+}
+
+.profile-image span {
+  font-size: 85px;
+}
+
+.name {
+  width: 100%;
+}
+
+.name h3 {
+  color: #e6edf3;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.profile-user-id {
+  color: #8b949e;
+  font-size: 14px;
+  margin: 0 0 18px;
+  overflow-wrap: anywhere;
+}
+
+/* Follow Button */
+
+.follow-btn {
+  width: 100%;
+  padding: 9px 16px;
+  margin: 5px 0 18px;
+  background-color: #21262d;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.follow-btn:hover {
+  background-color: #30363d;
+  border-color: #8b949e;
+}
+
+/* Followers */
+
+.follower {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.follower p {
+  color: #8b949e;
+  font-size: 14px;
+  margin: 0;
+}
+
+.follower strong {
+  color: #e6edf3;
+}
+
+/* Main Content */
+
+.profile-main-section {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Heatmap */
+
+.heat-map-section {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* Repositories */
+
+.profile-repositories,
+.profile-issues {
+  width: 100%;
+  color: #e6edf3;
+}
+
+.repositories-heading,
+.issues-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #30363d;
+}
+
+.repositories-heading h2,
+.issues-heading h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.repositories-heading span,
+.issues-heading span {
+  background: #30363d;
+  color: #c9d1d9;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+/* Repository Card */
+
+.profile-repo-card {
+  padding: 18px;
+  margin-bottom: 15px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.profile-repo-card:hover {
+  border-color: #58a6ff;
+}
+
+.repo-card-header,
+.issue-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.repo-card-header h3,
+.issue-card-header h3 {
+  color: #58a6ff;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.repo-visibility {
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.profile-repo-card p,
+.profile-issue-card p {
+  color: #8b949e;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+.repo-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.repo-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #f1e05a;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* Issues */
+
+.profile-issue-card {
+  padding: 18px;
+  margin-bottom: 15px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.profile-issue-card:hover {
+  border-color: #58a6ff;
+}
+
+.issue-status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.issue-status.open {
+  color: #3fb950;
+  border: 1px solid #238636;
+}
+
+.issue-status.closed {
+  color: #a371f7;
+  border: 1px solid #8957e5;
+}
+
+.issue-repo-name {
+  color: #8b949e;
+  font-size: 12px;
+  margin: 12px 0;
+}
+
+/* View Issues Button */
+
+.profile-view-issues-btn {
+  padding: 7px 15px;
+  background-color: #21262d;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.profile-view-issues-btn:hover {
+  background-color: #30363d;
+  border-color: #8b949e;
+}
+
+/* Empty and Loading Messages */
+
+.repo-message {
+  color: #8b949e;
+  padding: 20px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Logout */
+
+#logout {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 9px 20px;
+  background-color: #da3633;
+  color: white;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  z-index: 100;
+}
+
+#logout:hover {
+  background-color: #f85149;
+}
+
+/* Responsive Design */
+
+@media (max-width: 850px) {
+  .profile-page-wrapper {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 20px;
+    padding: 15px 20px;
+  }
+
+  .profile-image {
+    width: 170px;
+    height: 170px;
+  }
+
+  .profile-image span {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  .user-profile-section {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .profile-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .profile-image span {
+    font-size: 60px;
+  }
+
+  .name {
+    text-align: center;
+  }
+
+  .name h3 {
+    font-size: 23px;
+  }
+
+  .follow-btn {
+    max-width: 350px;
+  }
+
+  .follower {
+    justify-content: center;
+  }
+
+  .heat-map-section {
+    padding: 12px;
+  }
+
+  .repo-card-header,
+  .issue-card-header {
+    align-items: flex-start;
+  }
+
+  #logout {
+    bottom: 15px;
+    right: 15px;
+  }
+}

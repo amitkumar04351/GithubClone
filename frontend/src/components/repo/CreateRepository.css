@@ -1,0 +1,195 @@
+
+.create-repo-page {
+  min-height: 100vh;
+  background: #0d1117;
+  color: #e6edf3;
+  padding: 55px 20px;
+}
+
+.create-repo-container {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 35px;
+}
+
+.create-repo-header {
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #30363d;
+}
+
+.create-repo-header h1 {
+  font-size: 27px;
+  margin-bottom: 10px;
+  color: #e6edf3;
+}
+
+.create-repo-header p {
+  color: #8b949e;
+  font-size: 14px;
+}
+
+.repo-form-group {
+  margin-bottom: 25px;
+}
+
+.repo-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.repo-form-group label span {
+  color: #f85149;
+}
+
+.repo-form-group input,
+.repo-form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+}
+
+.repo-form-group input:focus,
+.repo-form-group textarea:focus {
+  border-color: #2f81f7;
+  box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.15);
+}
+
+.repo-form-group textarea {
+  resize: vertical;
+}
+
+.repo-form-group small {
+  display: block;
+  color: #8b949e;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.repo-visibility-section {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid #30363d;
+  border-radius: 9px;
+}
+
+.repo-visibility-section h3 {
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.visibility-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 10px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background 0.2s ease;
+}
+
+.visibility-option:hover {
+  background: #21262d;
+}
+
+.visibility-option input {
+  width: 17px;
+  height: 17px;
+  margin-top: 4px;
+  accent-color: #2f81f7;
+  cursor: pointer;
+}
+
+.visibility-option strong {
+  font-size: 14px;
+}
+
+.visibility-option p {
+  color: #8b949e;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.repo-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #30363d;
+}
+
+.repo-cancel-btn,
+.repo-create-btn {
+  padding: 10px 18px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.repo-cancel-btn {
+  background: #21262d;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+
+.repo-cancel-btn:hover {
+  background: #30363d;
+}
+
+.repo-create-btn {
+  background: #238636;
+  color: white;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+.repo-create-btn:hover {
+  background: #2ea043;
+}
+
+.repo-create-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.repo-error {
+  padding: 12px;
+  margin-top: 15px;
+  border: 1px solid #f85149;
+  border-radius: 7px;
+  color: #ff7b72;
+  background: rgba(248, 81, 73, 0.1);
+}
+
+@media (max-width: 600px) {
+  .create-repo-page {
+    padding: 25px 12px;
+  }
+
+  .create-repo-container {
+    padding: 20px;
+  }
+
+  .create-repo-header h1 {
+    font-size: 22px;
+  }
+
+  .repo-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .repo-form-actions button {
+    width: 100%;
+  }
+}

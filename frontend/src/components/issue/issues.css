@@ -1,0 +1,264 @@
+
+.issues-page {
+  min-height: 100vh;
+  background: #0d1117;
+  color: #e6edf3;
+  padding: 40px 20px;
+}
+
+.issues-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.issues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #30363d;
+}
+
+.issues-header h1 {
+  font-size: 30px;
+}
+
+.issues-header p {
+  color: #8b949e;
+  margin-top: 5px;
+}
+
+.issues-back-btn,
+.issue-submit-btn,
+.issue-cancel-btn,
+.issue-status-btn,
+.issue-edit-btn,
+.issue-delete-btn {
+  padding: 9px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #30363d;
+  transition: 0.2s ease;
+}
+
+.issues-back-btn,
+.issue-cancel-btn {
+  background: #21262d;
+  color: #e6edf3;
+}
+
+.issues-back-btn:hover,
+.issue-cancel-btn:hover {
+  background: #30363d;
+}
+
+.issue-form-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.issue-form-card h2,
+.issues-list h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.issue-form-card label {
+  display: block;
+  margin: 16px 0 8px;
+  font-weight: 600;
+}
+
+.issue-form-card input,
+.issue-form-card textarea {
+  width: 100%;
+  padding: 12px;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  font: inherit;
+  outline: none;
+}
+
+.issue-form-card input:focus,
+.issue-form-card textarea:focus {
+  border-color: #2f81f7;
+}
+
+.issue-form-card textarea {
+  resize: vertical;
+}
+
+.issue-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.issue-submit-btn {
+  background: #238636;
+  color: white;
+  border-color: #238636;
+}
+
+.issue-submit-btn:hover {
+  background: #2ea043;
+}
+
+.issue-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.issue-error {
+  color: #ff7b72;
+  margin-top: 12px;
+}
+
+.issues-summary {
+  display: flex;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.open-count {
+  color: #3fb950;
+}
+
+.closed-count {
+  color: #8b949e;
+}
+
+.issue-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 9px;
+  margin-bottom: 12px;
+}
+
+.issue-card:hover {
+  border-color: #484f58;
+}
+
+.issue-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.issue-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.issue-title-row h3 {
+  font-size: 17px;
+}
+
+.issue-card-content p {
+  color: #8b949e;
+  margin: 10px 0;
+  overflow-wrap: anywhere;
+}
+
+.issue-card-content small {
+  color: #6e7681;
+}
+
+.issue-status {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.status-open {
+  background: rgba(35, 134, 54, 0.15);
+  color: #3fb950;
+}
+
+.status-closed {
+  background: rgba(139, 148, 158, 0.15);
+  color: #8b949e;
+}
+
+.issue-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.issue-status-btn {
+  background: #21262d;
+  color: #3fb950;
+}
+
+.issue-edit-btn {
+  background: #21262d;
+  color: #58a6ff;
+}
+
+.issue-delete-btn {
+  background: #21262d;
+  color: #ff7b72;
+}
+
+.issue-status-btn:hover,
+.issue-edit-btn:hover,
+.issue-delete-btn:hover {
+  background: #30363d;
+}
+
+.no-issues {
+  text-align: center;
+  padding: 45px 20px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+}
+
+.no-issues p {
+  margin-top: 8px;
+  color: #8b949e;
+}
+
+@media (max-width: 650px) {
+  .issues-page {
+    padding: 25px 12px;
+  }
+
+  .issues-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .issue-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .issue-card-actions {
+    width: 100%;
+  }
+
+  .issue-form-card {
+    padding: 18px;
+  }
+}

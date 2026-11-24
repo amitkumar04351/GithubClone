@@ -1,0 +1,133 @@
+
+nav {
+  width: 100%;
+  min-height: 70px;
+  padding: 0 5%;
+  background-color: #161b22;
+  border-bottom: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* GitHub Logo Section */
+nav > a {
+  text-decoration: none;
+  color: #e6edf3;
+}
+
+nav > a > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+nav h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: #e6edf3;
+  letter-spacing: 0.3px;
+}
+
+/* Navigation Links */
+nav > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav > div a {
+  text-decoration: none;
+  padding: 9px 15px;
+  border-radius: 7px;
+  transition: all 0.25s ease;
+}
+
+nav > div a p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Create Repository - Green Background, White Text */
+nav > div a:first-child {
+  background-color: #238636;
+  color: #ffffff;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+nav > div a:first-child p {
+  color: #ffffff;
+}
+
+nav > div a:first-child:hover {
+  background-color: #2ea043;
+}
+
+/* Profile - White Background, Black Text */
+nav > div a:last-child {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+
+nav > div a:last-child p {
+  color: #000000;
+}
+
+nav > div a:last-child:hover {
+  background-color: #e6e6e6;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  nav {
+    padding: 12px 4%;
+    min-height: 65px;
+    gap: 10px;
+  }
+
+  nav img {
+    width: 30px;
+    height: 30px;
+  }
+
+  nav h3 {
+    font-size: 18px;
+  }
+
+  nav > div {
+    gap: 5px;
+  }
+
+  nav > div a {
+    padding: 8px 9px;
+  }
+
+  nav > div a p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  nav > div {
+    justify-content: center;
+    width: 100%;
+  }
+}

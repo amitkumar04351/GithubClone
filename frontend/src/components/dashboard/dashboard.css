@@ -1,0 +1,209 @@
+
+/* Main Dashboard Layout */
+#dashboard {
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  padding: 35px 4%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 250px minmax(300px, 1fr) 250px;
+  gap: 25px;
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: Arial, sans-serif;
+}
+
+/* Common Aside and Main */
+#dashboard aside,
+#dashboard main {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 22px;
+  box-sizing: border-box;
+}
+
+/* Headings */
+#dashboard h2 {
+  font-size: 25px;
+  margin: 0 0 22px;
+  color: #e6edf3;
+}
+
+#dashboard h3 {
+  font-size: 18px;
+  margin: 0 0 20px;
+  color: #e6edf3;
+}
+
+#dashboard h4 {
+  font-size: 16px;
+  margin: 0 0 10px;
+  color: #58a6ff;
+  word-break: break-word;
+}
+
+/* Lists */
+#dashboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#dashboard li {
+  padding: 16px 0;
+  border-bottom: 1px solid #30363d;
+}
+
+#dashboard li:last-child {
+  border-bottom: none;
+}
+
+/* Description and Paragraphs */
+#dashboard p {
+  color: #8b949e;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+
+/* Search Box */
+#dashboard #search {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+#dashboard #search input {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+#dashboard #search input::placeholder {
+  color: #8b949e;
+}
+
+#dashboard #search input:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 2px rgba(56, 139, 253, 0.2);
+}
+
+/* Repository Cards */
+#dashboard main li {
+  padding: 18px;
+  margin-bottom: 14px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+#dashboard main li:hover {
+  border-color: #58a6ff;
+}
+
+#dashboard main li:last-child {
+  margin-bottom: 0;
+}
+
+/* Suggested Repository Items */
+#dashboard aside li {
+  transition: background-color 0.2s ease;
+}
+
+#dashboard aside li:hover {
+  background-color: #1c2128;
+}
+
+/* View Issues Button */
+.view-issues-btn {
+  margin-top: 12px;
+  padding: 9px 18px;
+  background-color: #238636;
+  color: #ffffff;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-issues-btn:hover {
+  background-color: #2ea043;
+  transform: scale(1.05);
+}
+
+.view-issues-btn:active {
+  transform: scale(0.97);
+}
+
+/* Empty State */
+#dashboard main > ul > p,
+#dashboard aside > ul > p {
+  padding: 15px 0;
+  color: #8b949e;
+  font-size: 14px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1050px) {
+  #dashboard {
+    grid-template-columns: 220px minmax(280px, 1fr);
+  }
+
+  #dashboard aside:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 700px) {
+  #dashboard {
+    grid-template-columns: 1fr;
+    padding: 20px 4%;
+    gap: 18px;
+  }
+
+  #dashboard aside,
+  #dashboard main {
+    width: 100%;
+    padding: 18px;
+  }
+
+  #dashboard aside:last-child {
+    grid-column: auto;
+  }
+
+  #dashboard h2 {
+    font-size: 22px;
+  }
+
+  #dashboard h3 {
+    font-size: 17px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+  #dashboard {
+    padding: 14px 3%;
+  }
+
+  #dashboard aside,
+  #dashboard main {
+    padding: 14px;
+  }
+
+  .view-issues-btn {
+    width: 100%;
+  }
+}
