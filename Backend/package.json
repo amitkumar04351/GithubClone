@@ -10,6 +10,7 @@
   "type": "commonjs",
   "dependencies": {
     "aws-sdk": "^2.1693.0",
+    "axios": "^1.21.1",
     "bcryptjs": "^3.0.3",
     "body-parser": "^2.4.0",
     "cors": "^2.8.6",

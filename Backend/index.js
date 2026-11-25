@@ -1,3 +1,7 @@
+const axios = require("axios");
+const fs = require("fs").promises;
+const path = require("path");
+const readline = require("readline");
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -21,6 +25,43 @@ dotenv.config();
 
 yargs(hideBin(process.argv))
   .command("start", "Starts a new server", {}, startServer)
+
+  .command("login", "Login to GitHub Clone", {}, async () => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    const ask = (question) =>
+      new Promise((resolve) => rl.question(question, resolve));
+
+    try {
+      const email = await ask("Email: ");
+      const password = await ask("Password: ");
+      rl.close();
+
+      const response = await axios.post("http://localhost:3000/login", {
+        email,
+        password,
+      });
+
+      const repoPath = path.resolve(process.cwd(), ".Git");
+      await fs.mkdir(repoPath, { recursive: true });
+
+      await fs.writeFile(path.join(repoPath, "token"), response.data.token, {
+        mode: 0o600,
+      });
+
+      console.log("Login successful! Token saved.");
+    } catch (error) {
+      rl.close();
+      console.error(
+        "Login failed:",
+        error.response?.data?.message || error.message,
+      );
+    }
+  })
+
   .command("init", "Initialise a new repository", {}, initRepo)
   .command(
     "add <file>",
@@ -48,6 +89,32 @@ yargs(hideBin(process.argv))
       commitRepo(argv.message);
     },
   )
+  .command(
+    "remote add <name> <url>",
+    "Connect local repository to remote repository",
+    (yargs) => {
+      yargs
+        .positional("name", { type: "string" })
+        .positional("url", { type: "string" });
+    },
+    async (argv) => {
+      try {
+        const repoPath = path.resolve(process.cwd(), ".Git");
+        const configPath = path.join(repoPath, "config.json");
+
+        const config = JSON.parse(await fs.readFile(configPath, "utf8"));
+
+        config.remote = config.remote || {};
+        config.remote[argv.name] = { url: argv.url };
+
+        await fs.writeFile(configPath, JSON.stringify(config, null, 2));
+
+        console.log(`Remote '${argv.name}' added successfully!`);
+      } catch (err) {
+        console.error("Remote add failed:", err.message);
+      }
+    },
+  )
   .command("push", "Push commits to S3", {}, pushRepo)
   .command("pull", "Pull commits from S3", {}, pullRepo)
   .command(
@@ -70,22 +137,21 @@ function startServer() {
   const app = express();
   const port = process.env.PORT || 3000;
 
-  app.use(bodyParser.json());
-  app.use(express.json());
+  app.use(express.json({ limit: "50mb" }));
 
   const mongoURI = process.env.MONGODB_URI;
 
-if (!mongoURI) {
-  console.error("MONGODB_URI is missing in .env file");
-  return;
-}
+  if (!mongoURI) {
+    console.error("MONGODB_URI is missing in .env file");
+    return;
+  }
 
-mongoose
-  .connect(mongoURI)
-  .then(() => console.log("MongoDB connected successfully!"))
-  .catch((err) => {
-    console.error("MongoDB Connection Error:", err.message);
-  });
+  mongoose
+    .connect(mongoURI)
+    .then(() => console.log("MongoDB connected successfully!"))
+    .catch((err) => {
+      console.error("MongoDB Connection Error:", err.message);
+    });
   app.use(cors({ origin: "*" }));
 
   app.use("/", mainRouter);

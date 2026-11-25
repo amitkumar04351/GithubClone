@@ -10,8 +10,8 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestedRepositories, setSuggestedRepositories] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [deletingRepo, setDeletingRepo] = useState(null);
 
-  // Fetch repositories
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
@@ -26,14 +26,9 @@ const Dashboard = () => {
           `http://localhost:3000/repo/user/${userId}`,
         );
 
-        if (!response.ok) {
-          throw new Error(`API Error: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`API Error: ${response.status}`);
 
         const data = await response.json();
-
-        console.log("User repositories API response:", data);
-
         const repos = Array.isArray(data)
           ? data
           : Array.isArray(data.repositories)
@@ -41,8 +36,8 @@ const Dashboard = () => {
             : [];
 
         setRepositories(repos);
-      } catch (err) {
-        console.error("Error while fetching repositories:", err);
+      } catch (error) {
+        console.error("Error fetching repositories:", error);
         setRepositories([]);
       }
     };
@@ -51,14 +46,9 @@ const Dashboard = () => {
       try {
         const response = await fetch("http://localhost:3000/repo/all");
 
-        if (!response.ok) {
-          throw new Error(`API Error: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`API Error: ${response.status}`);
 
         const data = await response.json();
-
-        console.log("Suggested repositories API response:", data);
-
         const repos = Array.isArray(data)
           ? data
           : Array.isArray(data.repositories)
@@ -66,8 +56,8 @@ const Dashboard = () => {
             : [];
 
         setSuggestedRepositories(repos);
-      } catch (err) {
-        console.error("Error while fetching suggested repositories:", err);
+      } catch (error) {
+        console.error("Error fetching suggested repositories:", error);
         setSuggestedRepositories([]);
       }
     };
@@ -76,22 +66,63 @@ const Dashboard = () => {
     fetchSuggestedRepositories();
   }, []);
 
-  // Search repositories
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setSearchResults(repositories);
-    } else {
-      const filteredRepo = repositories.filter((repo) =>
-        (repo.name || "").toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+    const filtered = repositories.filter((repo) =>
+      (repo.name || "").toLowerCase().includes(searchQuery.toLowerCase()),
+    );
 
-      setSearchResults(filteredRepo);
-    }
+    setSearchResults(filtered);
   }, [searchQuery, repositories]);
 
-  // Open Issues page
+  const handleOpenRepository = (repoId) => {
+    navigate(`/repository/${repoId}`);
+  };
+
   const handleViewIssues = (repoId) => {
     navigate(`/issues/${repoId}`);
+  };
+
+  // DELETE REPOSITORY FUNCTION
+  const handleDeleteRepository = async (repoId, repoName) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${repoName}"? This action cannot be undone.`,
+    );
+
+    if (!confirmDelete) return;
+
+    setDeletingRepo(repoId);
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/repo/delete/${repoId}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || data.message || "Unable to delete repository",
+        );
+      }
+
+      setRepositories((previous) =>
+        previous.filter((repo) => repo._id !== repoId),
+      );
+
+      setSuggestedRepositories((previous) =>
+        previous.filter((repo) => repo._id !== repoId),
+      );
+
+      alert("Repository deleted successfully!");
+    } catch (error) {
+      console.error("Delete repository error:", error);
+      alert(error.message || "Failed to delete repository!");
+    } finally {
+      setDeletingRepo(null);
+    }
   };
 
   return (
@@ -99,10 +130,8 @@ const Dashboard = () => {
       <Navbar />
 
       <section id="dashboard">
-        {/* Suggested Repositories */}
         <aside>
           <h3>Suggested Repositories</h3>
-
           <ul>
             {suggestedRepositories.length > 0 ? (
               suggestedRepositories.map((repo) => (
@@ -119,7 +148,6 @@ const Dashboard = () => {
           </ul>
         </aside>
 
-        {/* Your Repositories */}
         <main>
           <h2>Your Repositories</h2>
 
@@ -138,14 +166,47 @@ const Dashboard = () => {
                 <li key={repo._id}>
                   <div>
                     <h4>{repo.name}</h4>
-
                     <p>{repo.description || "No description available"}</p>
 
                     <button
+                      type="button"
                       className="view-issues-btn"
+                      onClick={() => handleOpenRepository(repo._id)}
+                    >
+                      Open Repository
+                    </button>
+
+                    <button
+                      type="button"
+                      className="view-issues-btn"
+                      style={{ marginLeft: "15px" }}
                       onClick={() => handleViewIssues(repo._id)}
                     >
                       View Issues
+                    </button>
+
+                    <button
+                      type="button"
+                      disabled={deletingRepo === repo._id}
+                      onClick={() =>
+                        handleDeleteRepository(repo._id, repo.name)
+                      }
+                      style={{
+                        marginTop: "12px",
+                        marginLeft: "15px",
+                        padding: "9px 18px",
+                        backgroundColor: "#da3633",
+                        color: "#ffffff",
+                        border: "1px solid #da3633",
+                        borderRadius: "20px",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {deletingRepo === repo._id
+                        ? "Deleting..."
+                        : "Delete Repository"}
                     </button>
                   </div>
                 </li>
@@ -160,19 +221,15 @@ const Dashboard = () => {
           </ul>
         </main>
 
-        {/* Upcoming Events */}
         <aside>
           <h3>Upcoming Events</h3>
-
           <ul>
             <li>
               <p>Tech Conference - Dec 15</p>
             </li>
-
             <li>
               <p>Developer Meetup - Dec 25</p>
             </li>
-
             <li>
               <p>React Summit - Jan 5</p>
             </li>
