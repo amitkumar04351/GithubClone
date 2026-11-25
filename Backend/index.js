@@ -40,7 +40,7 @@ yargs(hideBin(process.argv))
       const password = await ask("Password: ");
       rl.close();
 
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("https://githubclone-backend-mppw.onrender.com/login", {
         email,
         password,
       });

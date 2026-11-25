@@ -23,7 +23,7 @@ const Dashboard = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/repo/user/${userId}`,
+          `https://githubclone-backend-mppw.onrender.com/repo/user/${userId}`,
         );
 
         if (!response.ok) throw new Error(`API Error: ${response.status}`);
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
     const fetchSuggestedRepositories = async () => {
       try {
-        const response = await fetch("http://localhost:3000/repo/all");
+        const response = await fetch("https://githubclone-backend-mppw.onrender.com/repo/all");
 
         if (!response.ok) throw new Error(`API Error: ${response.status}`);
 
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/repo/delete/${repoId}`,
+        `https://githubclone-backend-mppw.onrender.com/repo/delete/${repoId}`,
         {
           method: "DELETE",
         },

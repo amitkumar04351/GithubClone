@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./issues.css";
 
-const API = "http://localhost:3000";
+const API = "https://githubclone-backend-mppw.onrender.com";
 
 const Issues = () => {
   const { repoId } = useParams();

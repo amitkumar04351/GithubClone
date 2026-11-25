@@ -18,7 +18,7 @@ const RepositoryView = () => {
   useEffect(() => {
     const fetchRepository = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/repo/${id}`);
+        const response = await fetch(`https://githubclone-backend-mppw.onrender.com/repo/${id}`);
 
         const data = await response.json();
 
@@ -45,7 +45,7 @@ const RepositoryView = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/repo/${id}/file?key=${encodeURIComponent(file)}`,
+        `https://githubclone-backend-mppw.onrender.com/repo/${id}/file?key=${encodeURIComponent(file)}`,
       );
 
       const data = await response.json();

@@ -36,7 +36,7 @@ const Profile = () => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/userProfile/${userId}`
+          `https://githubclone-backend-mppw.onrender.com/userProfile/${userId}`
         );
 
         const userData = response.data.user || response.data;
@@ -49,7 +49,7 @@ const Profile = () => {
     const fetchRepositories = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/repo/user/${userId}`
+          `https://githubclone-backend-mppw.onrender.com/repo/user/${userId}`
         );
 
         const data = response.data;
@@ -89,7 +89,7 @@ const Profile = () => {
           repositories.map(async (repo) => {
             try {
               const response = await axios.get(
-                `http://localhost:3000/issue/all/${repo._id}`
+                `https://githubclone-backend-mppw.onrender.com/issue/all/${repo._id}`
               );
 
               const repoIssues = Array.isArray(response.data.issues)
