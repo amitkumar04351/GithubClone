@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./createRepository.css";
+import "./CreateRepository.css";
 
 const CreateRepository = () => {
   const navigate = useNavigate();
