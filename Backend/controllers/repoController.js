@@ -37,19 +37,20 @@ async function createRepository(req, res) {
 }
 
 // Get all repositories
+// Get all repositories
 async function getAllRepositories(req, res) {
   try {
-    const repositories = await Repository.find({})
-      .populate("owner")
-      .populate("issues");
+    const repositories = await Repository.find({});
 
-    res.json(repositories);
+    res.status(200).json(repositories);
   } catch (err) {
-    console.error("Fetching error:", err.message);
-    res.status(500).json({ error: "Server error" });
+    console.error("Fetching error:", err);
+    res.status(500).json({
+      error: "Server error",
+      details: err.message,
+    });
   }
 }
-
 // Get repository by ID
 
 async function fetchRepositoryById(req, res) {
